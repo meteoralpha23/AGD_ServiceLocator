@@ -9,6 +9,17 @@ namespace ServiceLocator.Sound
         [SerializeField] private AudioSource audioEffects;
         [SerializeField] private AudioSource backgroundMusic;
 
+        public static SoundService Instance { get { return instance; } }
+        private static SoundService instance;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+        }
+
         private void Start()
         {
             PlaybackgroundMusic(SoundType.BackgroundMusic, true);
